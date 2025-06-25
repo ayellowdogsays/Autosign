@@ -1,20 +1,14 @@
+{
   "builds": [
     {
-      "src": "core/wsgi.py",
-      "use": "@vercel/python",
-      "config": { "runtime": "python3.12" }
-    },
-    {
-      "src": "vercel.sh",
-      "use": "@vercel/static-build",
-      "config": { "distDir": "." }
+      "src": "api/app.py",
+      "use": "@vercel/python"
     }
   ],
-  "rewrites": [
+  "routes": [
     {
-      "source": "(.*)",
-      "destination": "core/wsgi.py"
+      "src": "/api/(.*)",
+      "dest": "/api/app.py"
     }
-  ],
-  "trailingSlash": true
+  ]
 }
